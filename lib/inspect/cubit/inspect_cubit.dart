@@ -36,7 +36,9 @@ class InspectCubit extends Cubit<InspectState> {
         return showFile(_selectedFileName);
       }
     }).catchError(
-      (Object ex, StackTrace st) => emit(InspectState.error(ex, st)),
+      (Object ex, StackTrace st) {
+        emit(InspectState.error(ex, st));
+      },
     );
   }
 

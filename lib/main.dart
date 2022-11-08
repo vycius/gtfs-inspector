@@ -1,14 +1,20 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+// ignore: depend_on_referenced_packages
+import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:gtfs_inspector/app/view/app.dart';
 
 Future<void> main() async {
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
+
+  if (!kDebugMode) usePathUrlStrategy();
 
   WidgetsFlutterBinding.ensureInitialized();
 
